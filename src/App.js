@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Weather from "./Components/Weather";
 
 export default function App() {
   const [lat, setLat] = useState(0);
@@ -12,6 +13,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    // Function to get client's geolocation and then fetch data using OpenWeatherAPI
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition(function (position) {
         setLat(position.coords.latitude);
@@ -25,7 +27,6 @@ export default function App() {
           .then((res) => res.json())
           .then((result) => {
             setData(result);
-            // console.log(result);
           });
       } catch (error) {
         console.log(error);
@@ -35,16 +36,9 @@ export default function App() {
     fetchData();
   }, [lat, long]);
 
-  console.log(data);
+  console.log(data); // logging received data
 
   return (
-    <>
-      {data ? (
-        <div>
-          Latitude: {lat} <br /> Longitude: {long} <br /> Place: {data.name}
-          <br /> Temp: {kelvinToCelsius(data.main.temp)} °C
-        </div>
-      ) : null}
-    </>
+    <div className="App">{data ? <Weather weatherData={""} /> : null}</div>
   );
 }
