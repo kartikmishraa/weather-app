@@ -30,7 +30,7 @@ export default function App() {
     fetchData();
   }, [lat, long]);
 
-  console.log(data); // logging received data
+  //console.log(data); // logging received data
 
   return (
     <div className="App">{data ? <Weather weatherData={""} /> : null}</div>
