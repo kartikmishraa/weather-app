@@ -6,12 +6,6 @@ export default function App() {
   const [long, setLong] = useState(0);
   const [data, setData] = useState(false);
 
-  // Temperory function to convert Kelvin temp to Celsius
-  function kelvinToCelsius(temp) {
-    const newTemp = temp - 273.15;
-    return Math.round((newTemp + Number.EPSILON) * 100) / 100;
-  }
-
   useEffect(() => {
     // Function to get client's geolocation and then fetch data using OpenWeatherAPI
     const fetchData = async () => {
