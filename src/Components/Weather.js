@@ -31,7 +31,7 @@ export default function Weather(props) {
           &deg;C <br />
           Feels Like: {data.feelsLike} &deg;C
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary">BUTTON</Button>
       </Card.Body>
       <Card.Footer className="text-muted">{data.country}</Card.Footer>
     </Card>
