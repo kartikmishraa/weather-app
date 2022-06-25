@@ -30,8 +30,6 @@ export default function App() {
     fetchData();
   }, [coords.lat, coords.long]);
 
-  //console.log(data); // logging received data
-
   return (
     <div className="myContainer">
       {data ? <Weather weatherData={data} /> : null}
