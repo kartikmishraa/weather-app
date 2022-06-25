@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import Weather from "./Components/Weather";
 
 export default function App() {
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
   const [data, setData] = useState(false);
+  const [coords, setCoords] = useState({ lat: 0, long: 0 });
 
   useEffect(() => {
     // Function to get client's geolocation and then fetch data using OpenWeatherAPI
     const fetchData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
-      });
-
       try {
+        await navigator.geolocation.getCurrentPosition(function (position) {
+          setCoords({
+            lat: position.coords.latitude,
+            long: position.coords.longitude,
+          });
+        });
         await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${process.env.REACT_APP_API_KEY}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=${process.env.REACT_APP_API_KEY}`
         )
           .then((res) => res.json())
           .then((result) => {
@@ -28,7 +28,7 @@ export default function App() {
     };
 
     fetchData();
-  }, [lat, long]);
+  }, [coords.lat, coords.long]);
 
   //console.log(data); // logging received data
 
