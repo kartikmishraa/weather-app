@@ -33,6 +33,8 @@ export default function App() {
   //console.log(data); // logging received data
 
   return (
-    <div className="App">{data ? <Weather weatherData={data} /> : null}</div>
+    <div className="myContainer">
+      {data ? <Weather weatherData={data} /> : null}
+    </div>
   );
 }
