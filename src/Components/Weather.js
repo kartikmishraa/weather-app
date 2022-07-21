@@ -17,6 +17,7 @@ export default function Weather(props) {
     maxTemp: formatTemp(props.weatherData.main.temp_max),
     minTemp: formatTemp(props.weatherData.main.temp_min),
     feelsLike: formatTemp(props.weatherData.main.feels_like),
+    humidity: props.weatherData.main.humidity,
   };
 
   return (
@@ -29,7 +30,8 @@ export default function Weather(props) {
         <Card.Text>
           Max. Temp: {data.maxTemp} &deg;C <br /> Min. Temp: {data.minTemp}{" "}
           &deg;C <br />
-          Feels Like: {data.feelsLike} &deg;C
+          Feels Like: {data.feelsLike} &deg;C <br />
+          Humidity: {data.humidity} %
         </Card.Text>
         <Button variant="primary">BUTTON</Button>
       </Card.Body>
