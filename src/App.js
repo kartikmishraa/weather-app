@@ -16,7 +16,7 @@ export default function App() {
           });
         });
         await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&appid=${process.env.REACT_APP_API_KEY}`
+          `${process.env.REACT_APP_API_URL}?lat=${coords.lat}&lon=${coords.long}&appid=${process.env.REACT_APP_API_KEY}`
         )
           .then((res) => res.json())
           .then((result) => {
